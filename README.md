@@ -16,7 +16,7 @@ Setup for the database is easy. Construct the website as you normally would usin
 from archive import database
 database.data = dict(
 	backupdrive = 'http://mydrive.com',
-	model = &lt;database here&gt;
+	model = <database here>
 )
 app = database.WSGIApplication([('/(.*)', MainHandler)],debug=True)
 ```
