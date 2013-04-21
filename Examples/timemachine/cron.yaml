@@ -1,0 +1,8 @@
+cron:
+- description: Automated Backup
+  url: /kl6imvteNJh4fh9PfXSB
+  schedule: every day 00:00
+  timezone: US/Eastern
+- description: Synchronized Access Token Cleanup
+  url: /G5Pjss5Rf6ovRN70VJy6
+  schedule: every 1 hours synchronized
