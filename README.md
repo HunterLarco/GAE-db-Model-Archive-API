@@ -4,7 +4,7 @@ Archive API
 ### Summary ###
 The purpose of the Archive API is to create a seamless, easy to use, automated backup system for the Google App Engine datastore. Originally created for [The Acton-Boxborough Regional High School Community Service Website](http://abrhscs.appspot.com) (ABRHSCS), the API has been used since.
 
-`Note:` the function `restore` in [database.py](./archive/database.py) is static and must be changed to apply to each individual datastore it is backing up. Also note that the provided timemachine example is operational.
+**Note:** the function `restore` in [database.py](./Scripts/Archive API/database.py) is static and must be changed to apply to each individual datastore it is backing up. Also note that the provided timemachine example is operational.
 
 ### Setting Up The API ###
 Two websites are maintained under the Archive API: the targeted website which provides the database to backup and the remote backup drive. The backup drive will back up the other's database every day and may restore that database from any backup at any time. Thus each is configured differently as instructed below.
@@ -36,10 +36,10 @@ timemachine.data = dict(
 app = timemachine.WSGIApplication([('/(.*)', MainHandler)],debug=True)
 ```
 
-`Note:` do not forget to also include the [cron.yaml](./archive/cron.yaml) file in the root of your remote drive application, otherwise it will not automatically backup.
+**Note:** do not forget to also include the [cron.yaml](./Scripts/Archive API/cron.yaml) file in the root of your remote drive application, otherwise it will not automatically backup.
 
 ### Methods ###
-'''(paragraph)All the methods are contained within the timemachine and are only used from the remote drive
+All the methods are contained within the timemachine and are only used from the remote drive
 * `requestToken()` is used to obtain one-use access tokens that give permission to either force a backup or restore from a backup.
 ```python
 # for example, this obtains a url for forcing a backup
@@ -54,7 +54,7 @@ last = stats.last
 next = stats.next
 size = stats.size
 ```
-* `fetch(<i>token</i>)` returns a list of all the backups, each one with a stats key which contains the size, creation time, content, and restoration url. Keep in mind that each entity in the list is also an instance of the Blobstore.
+* `fetch(token)` returns a list of all the backups, each one with a stats key which contains the size, creation time, content, and restoration url. Keep in mind that each entity in the list is also an instance of the Blobstore.
 ```python
 # example usage
 for item in timemachine.fetch(timemachine.requestToken()):
@@ -64,7 +64,7 @@ for item in timemachine.fetch(timemachine.requestToken()):
 	restoreURL = item.stats.post
 ```
 
-`Note:` additional methods exist but are used by the cron jobs and don't require any use from the app.
+**Note:** additional methods exist but are used by the cron jobs and don't require any use from the app.
 
 ### Change Log ###
 2013 3 8
