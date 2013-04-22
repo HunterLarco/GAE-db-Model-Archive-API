@@ -46,6 +46,7 @@ All the methods are contained within the timemachine and are only used from the 
 backupURL = '/Tshk25zecErcQ5IAC9Az'+timemachine.requestToken()
 ```
 * `stats()` returns a dictionary of the number of backups, the total size of the backups, the time of the last backup, and the time of the next scheduled backup.
+
 ```python
 # example usage
 stats = timemachine.stats()
@@ -55,6 +56,7 @@ next = stats.next
 size = stats.size
 ```
 * `fetch(token)` returns a list of all the backups, each one with a stats key which contains the size, creation time, content, and restoration url. Keep in mind that each entity in the list is also an instance of the Blobstore.
+
 ```python
 # example usage
 for item in timemachine.fetch(timemachine.requestToken()):
